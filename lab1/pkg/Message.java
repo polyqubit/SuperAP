@@ -3,15 +3,20 @@ import java.util.*;
 import java.io.*;
 
 public class Message {
-
+	ArrayList<Message> childList;
+	String author, subject, body;
+	int id;
 	// Default Constructor
 	public Message() {
-		
+		this("", "", "", -1);
 	}
-	
-	// Parameterized Constructor
+
+	// Parameterized constructor
 	public Message(String auth, String subj, String bod, int i) {
-		
+		author = auth;
+		subject = subj;
+		body = bod;
+		id = i;
 	}
 
 	// This function is responsbile for printing the Message
@@ -24,27 +29,27 @@ public class Message {
 	// Note: Each indentation increment represents 2 spaces. e.g. if indentation ==  1, the reply should be indented 2 spaces, 
 	// if it's 2, indent by 4 spaces, etc. 
 	public void print(int indentation){
-
+		
 	}
 
 	// Default function for inheritance
 	public boolean isReply(){
-		
+		return false;
 	}
 
 	// Returns the subject String
 	public String getSubject(){
-		
+		return subject;
 	} 
 
 	// Returns the ID
 	public int getId(){
-		
+		return id;
 	}
 
 	// Adds a child pointer to the parent's childList.
 	public void addChild(Message child){
-		
+		childList.add(child);
 	}
 
 }

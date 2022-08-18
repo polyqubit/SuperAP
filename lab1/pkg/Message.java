@@ -29,7 +29,26 @@ public class Message {
 	// Note: Each indentation increment represents 2 spaces. e.g. if indentation ==  1, the reply should be indented 2 spaces, 
 	// if it's 2, indent by 4 spaces, etc. 
 	public void print(int indentation){
-		
+		System.out.print("------------------------------------------------------"); 
+		indent(indentation);
+		for(Message m : childList) {
+
+		}
+		if(indentation == 0) {
+			System.out.print("------------------------------------------------------");
+		}
+	}
+
+	private void indent(int indentation) {
+		for(int i=0; i<indentation*2;i++) {
+			System.out.print(" ");
+		}
+	}
+	
+	private void re(int num) {
+		for(int i=0; i<num*2;i++) {
+			System.out.print("Re: ");
+		}
 	}
 
 	// Default function for inheritance

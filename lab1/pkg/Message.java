@@ -30,7 +30,7 @@ public class Message {
 	// if it's 2, indent by 4 spaces, etc. 
 	public void print(int indentation){
 		System.out.print("------------------------------------------------------"); 
-		indent(indentation); System.out.println("Message #"+id+": \""+subject+"\"");
+		indent(indentation); System.out.print("Message #"+id+":"); re(indentation); System.out.println(" \""+subject+"\"");
 		indent(indentation); System.out.println("From "+author+": \""+body+"\"");
 		for(Message m : childList) {
 			m.print(indentation+1);

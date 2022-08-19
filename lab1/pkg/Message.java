@@ -1,6 +1,5 @@
 package pkg;
 import java.util.*;
-import java.io.*;
 
 public class Message {
 	ArrayList<Message> childList;
@@ -47,7 +46,7 @@ public class Message {
 	}
 	
 	private void re(int num) {
-		for(int i=0; i<num*2;i++) {
+		for(int i=0; i<num;i++) {
 			System.out.print("Re: ");
 		}
 	}

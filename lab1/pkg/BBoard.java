@@ -4,6 +4,9 @@ import java.io.*;
 
 public class BBoard {		// This is your main file that connects all classes.
 	// Think about what your global variables need to be.
+	private ArrayList<User> userList;
+	private ArrayList<Message> messageList;
+	String title;
 
 	// Default constructor that creates a board with a defaulttitle, empty user and message lists,
 	// and no current user

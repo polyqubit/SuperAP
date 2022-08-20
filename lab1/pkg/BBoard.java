@@ -6,16 +6,22 @@ public class BBoard {		// This is your main file that connects all classes.
 	// Think about what your global variables need to be.
 	private ArrayList<User> userList;
 	private ArrayList<Message> messageList;
+	private User mainUser;
 	String title;
 
 	// Default constructor that creates a board with a defaulttitle, empty user and message lists,
 	// and no current user
 	public BBoard() {
-		
+		userList = new ArrayList<>();
+		messageList = new ArrayList<>();
+		title = "testBoard";
 	}
 
 	// Same as the default constructor except it sets the title of the board
-	public BBoard(String ttl) {	
+	public BBoard(String ttl) {
+		userList = new ArrayList<>();
+		messageList = new ArrayList<>();
+		title = ttl;
 	}
 
 	// Gets a filename of a file that stores the user info in a given format (users.txt)
@@ -52,7 +58,11 @@ public class BBoard {		// This is your main file that connects all classes.
 	// It will then be the responsibility of the Topic object to invoke the print function recursively on its own replies
 	// The BBoard display function will ignore all reply objects in its message list
 	private void display(){
-
+		for(Message m : messageList) {
+			if(!m.isReply()) {
+				m.print(0);
+			}
+		}
 	}
 
 
@@ -71,7 +81,12 @@ public class BBoard {		// This is your main file that connects all classes.
 	// Once the Topic has been constructed, add it to the messageList
 	// This should invoke your inheritance of Topic to Message
 	private void addTopic(){
-
+		Scanner s = new Scanner(System.in);
+		System.out.print("Subject: ");
+		String sub = s.nextLine();
+		System.out.print("Body: ");
+		String bod = s.nextLine();
+		messageList.add(new Topic(mainUser.getUsername(), sub, bod, messageList.size()+1));
 	}
 
 	// This function asks the user to enter a reply to a given Message (which may be either a Topic or a Reply, so we can handle nested replies).
@@ -102,9 +117,23 @@ public class BBoard {		// This is your main file that connects all classes.
 	// The Reply's constructor should set the Reply's subject to "Re: " + its parent's subject.
 	// Call the addChild function on the parent Message to push back the new Message (to the new Reply) to the parent's childList ArrayList.
 	// Finally, push back the Message created to the BBoard's messageList. 
-	// Note: When the user chooses to return to the menu, do not call run() again - just return fro mthis addReply function. 
+	// Note: When the user chooses to return to the menu, do not call run() again - just return from this addReply function. 
 	private void addReply(){
-
+		Scanner s = new Scanner(System.in);
+		boolean correct = false;
+		while(!correct){
+			System.out.print("Enter message ID(-1 for menu): ");
+			int id = s.nextInt(); s.nextLine(); //TODO: Check for incorrect inputs(non-numeric character)
+			if(id == -1) {
+				return;
+			}
+			for(Message m : messageList) {
+				if(m.getId() == id) {
+					String body = s.nextLine();
+					m.addChild(new Reply(mainUser.getUsername(), body, messageList.size()+1));
+				}
+			}
+		}
 	}
 
 	// This function allows the user to change their current password.

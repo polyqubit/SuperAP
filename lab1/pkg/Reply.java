@@ -3,13 +3,13 @@ package pkg;
 public class Reply extends Message {
 	// Default Constructor
 	public Reply() {
-		this("", "", "", 0);
+		this("", "", 0);
+		subject = "";
 	}
 
 	// Parameterized constructor
-	public Reply(String auth, String subj, String bod, int i) {
+	public Reply(String auth, String bod, int i) {
 		author = auth;
-		subject = subj;
 		body = bod;
 		id = i;
 	}

@@ -28,7 +28,12 @@ public class BBoard {		// This is your main file that connects all classes.
 	// Opens and reads the file of all authorized users and passwords
 	// Constructs a User object from each name/password pair, and populates the userList ArrayList.
 	public void loadUsers(String inputFile) throws FileNotFoundException {
-
+		Scanner sc = new Scanner(new File(inputFile));
+		while(sc.hasNextLine()) {
+			String line = sc.nextLine();
+			int split = line.indexOf(' ');
+			userList.add(new User(line.substring(0, split), line.substring(split+1)));
+		}
 	}
 
 	// Asks for and validates a user/password. 

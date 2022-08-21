@@ -2,7 +2,7 @@ package pkg;
 import java.util.*;
 
 public class Message {
-	ArrayList<Message> childList;
+	ArrayList<Message> childList = new ArrayList<>();
 	String author, subject, body;
 	int id;
 	// Default Constructor
@@ -31,8 +31,8 @@ public class Message {
 		System.out.println("------------------------------------------------------"); 
 		indent(indentation); System.out.print("Message #"+id+":"); re(indentation); System.out.println(" \""+subject+"\"");
 		indent(indentation); System.out.println("From "+author+": \""+body+"\"");
-		for(Message m : childList) {
-			m.print(indentation+1);
+		for(int i=0;i<childList.size();i++) {
+			childList.get(i).print(indentation+1);
 		}
 		if(indentation == 0) {
 			System.out.println("------------------------------------------------------");

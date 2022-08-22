@@ -27,12 +27,15 @@ public class Message {
 
 	// Note: Each indentation increment represents 2 spaces. e.g. if indentation ==  1, the reply should be indented 2 spaces, 
 	// if it's 2, indent by 4 spaces, etc. 
-	public void print(int indentation){
-		System.out.println("------------------------------------------------------"); 
-		indent(indentation); System.out.print("Message #"+id+":"); re(indentation); System.out.println(" \""+subject+"\"");
+	public void print(int indentation, String title){
+		if(indentation == 0) {
+			System.out.println("------------------------------------------------------");
+		}
+		indent(indentation); System.out.print("Message #"+id+":"); re(indentation); System.out.println(" \""+title+"\"");
 		indent(indentation); System.out.println("From "+author+": \""+body+"\"");
 		for(int i=0;i<childList.size();i++) {
-			childList.get(i).print(indentation+1);
+			System.out.println();
+			childList.get(i).print(indentation+1, title);
 		}
 		if(indentation == 0) {
 			System.out.println("------------------------------------------------------");
@@ -47,13 +50,13 @@ public class Message {
 	
 	private void re(int num) {
 		for(int i=0; i<num;i++) {
-			System.out.print("Re: ");
+			System.out.print(" Re:");
 		}
 	}
 
 	// Default function for inheritance
 	public boolean isReply(){
-		return false;
+		return true;
 	}
 
 	// Returns the subject String

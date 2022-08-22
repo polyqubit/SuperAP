@@ -108,6 +108,8 @@ public class BBoard {		// This is your main file that connects all classes.
 					}case "q": {
 						System.out.println("Bye!\n");
 						return;
+					}default: {
+						System.out.println("Incorrect response.\n");
 					}
 				}
 			}
@@ -120,7 +122,7 @@ public class BBoard {		// This is your main file that connects all classes.
 	private void display() {
 		for(Message m : messageList) {
 			if(!m.isReply()) {
-				m.print(0);
+				m.print(0, m.subject);
 			}
 		}
 	}
@@ -186,8 +188,11 @@ public class BBoard {		// This is your main file that connects all classes.
 			}
 			for(Message m : messageList) {
 				if(m.getId() == id) {
+					System.out.print("Body: ");
 					String body = s.nextLine();
-					m.addChild(new Reply(mainUser.getUsername(), body, messageList.size()+1));
+					Reply def = new Reply(mainUser.getUsername(), body, messageList.size()+1);
+					messageList.add(def);
+					m.addChild(def);
 					return;
 				}
 			}
@@ -233,8 +238,10 @@ public class BBoard {		// This is your main file that connects all classes.
 		// Reads given file + adds changed password
 		ArrayList<String> users = new ArrayList<>();
 		File mainFile = new File(path);
+		int delete = 0;
 		try (Scanner sc = new Scanner(mainFile)) {
 			while(sc.hasNextLine()) {
+				delete++;
 				String temp = sc.nextLine();
 				if(temp.substring(0, temp.indexOf(' ')).equals(u.getUsername())) {
 					users.add(u.getUsername() + " " + pw);
@@ -244,8 +251,13 @@ public class BBoard {		// This is your main file that connects all classes.
 		}
 		try (// Overwrites file with new data
 		BufferedWriter bw = new BufferedWriter(new FileWriter(mainFile))) {
+			for(int i=0;i<delete+1;i++) {
+				bw.write("\n");
+			}
+		}
+		try (BufferedWriter bw2 = new BufferedWriter(new FileWriter(mainFile))) {
 			for(String s : users) {
-				bw.write(s);
+				bw2.write(s+"\n");
 			}
 		}
 	}

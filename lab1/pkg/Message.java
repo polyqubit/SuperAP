@@ -29,7 +29,7 @@ public class Message {
 	// if it's 2, indent by 4 spaces, etc. 
 	public void print(int indentation, String title){
 		if(indentation == 0) {
-			System.out.println("------------------------------------------------------");
+			System.out.println("\n------------------------------------------------------");
 		}
 		indent(indentation); System.out.print("Message #"+id+":"); re(indentation); System.out.println(" \""+title+"\"");
 		indent(indentation); System.out.println("From "+author+": \""+body+"\"");

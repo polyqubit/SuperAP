@@ -79,7 +79,14 @@ public class BBoard {		// This is your main file that connects all classes.
 	// Q/q should reset the currentUser to 0 and then end return
 	// Note: if login() did not set a valid currentUser, function must immediately return without showing menu
 	public void run() throws FileNotFoundException, IOException {
-		System.out.println(title);
+		for(int i=0;i<title.length()+2;i++) {
+			System.out.print("-");
+		}
+		System.out.println("\n "+title);
+		for(int i=0;i<title.length()+2;i++) {
+			System.out.print("-");
+		}
+		System.out.println();
 		login();
 		if(mainUser != null) {
 			while(true) {
@@ -109,7 +116,7 @@ public class BBoard {		// This is your main file that connects all classes.
 						System.out.println("Bye!\n");
 						return;
 					}default: {
-						System.out.println("Incorrect response.\n");
+						System.out.println("\nIncorrect response.");
 					}
 				}
 			}
@@ -220,7 +227,7 @@ public class BBoard {		// This is your main file that connects all classes.
 					System.out.print("Please enter your new password: ");
 					String temp2 = s.nextLine();
 					if(temp.length() >= 3) {
-						System.out.println("Password accepted.\n");
+						System.out.println("Password accepted.");
 						mainUser.setPassword(temp, temp2);
 						overwriteUsers(mainUser, temp2);
 						return;
@@ -246,7 +253,9 @@ public class BBoard {		// This is your main file that connects all classes.
 				if(temp.substring(0, temp.indexOf(' ')).equals(u.getUsername())) {
 					users.add(u.getUsername() + " " + pw);
 				}
-				users.add(temp);
+				else {
+					users.add(temp);
+				}
 			}
 		}
 		try (// Overwrites file with new data

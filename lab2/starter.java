@@ -11,6 +11,7 @@ class starter {
 		
 		int[] times = {10, 100, 1000, 10000, 100000, 1000000, 10000000};
 		int[] nums = new int[100];
+		int result;
 
 
 		System.out.println("-------------------Test-------------------");
@@ -19,10 +20,11 @@ class starter {
 			System.out.println("Interval: " + i);
 			
 			nums = new int[i];
+			randomize(nums);
 			start = System.nanoTime();
 
 			//  Put your method between these two comments
-			
+			result = search(nums);
 			//
 
 			finish = System.nanoTime();
@@ -33,14 +35,14 @@ class starter {
 			System.out.println("Duration: " + (finish-start));
 			System.out.println("Duration(ms): " + rounded);
 
-			for(int j=0;j<5;j++) {
-				System.out.print(nums[j]+" ");
-			}
-			System.out.print("... ");
-			for(int j=nums.length-5;j<nums.length;j++) {
-				System.out.print(nums[j]+" ");
-			}
-			System.out.println("\n");
+			// for(int j=0;j<5;j++) {
+			// 	System.out.print(nums[j]+" ");
+			// }
+			// System.out.print("... ");
+			// for(int j=nums.length-5;j<nums.length;j++) {
+			// 	System.out.print(nums[j]+" ");
+			// }
+			System.out.println(result + "\n");
 		}
 	}
 
@@ -55,26 +57,6 @@ class starter {
 		for(int i=0;i<arr.length;i++) {
 			if(arr[i]==find) {
 				return i;
-			}
-		}
-		return -1;
-	}
-
-	// borrowed from GeeksforGeeks
-	private static int bsearch(int[] arr) {
-		int find = r.nextInt(200000);
-		int low = 0;
-		int high = arr.length;
-		while(low != high) {
-			int mid = (low + high)/2;
-			if(arr[mid] == find) {
-				return mid;
-			}
-			else if(arr[mid] < find) {
-				low = mid + 1;
-			}
-			else {
-				high = mid = 1;
 			}
 		}
 		return -1;

@@ -24,7 +24,7 @@ class starter {
 			start = System.nanoTime();
 
 			//  Put your method between these two comments
-			result = search(nums);
+			selection(nums);
 			//
 
 			finish = System.nanoTime();
@@ -35,14 +35,14 @@ class starter {
 			System.out.println("Duration: " + (finish-start));
 			System.out.println("Duration(ms): " + rounded);
 
-			// for(int j=0;j<5;j++) {
-			// 	System.out.print(nums[j]+" ");
-			// }
-			// System.out.print("... ");
-			// for(int j=nums.length-5;j<nums.length;j++) {
-			// 	System.out.print(nums[j]+" ");
-			// }
-			System.out.println(result + "\n");
+			for(int j=0;j<5;j++) {
+				System.out.print(nums[j]+" ");
+			}
+			System.out.print("... ");
+			for(int j=nums.length-5;j<nums.length;j++) {
+				System.out.print(nums[j]+" ");
+			}
+			System.out.println("\n");
 		}
 	}
 
@@ -70,7 +70,7 @@ class starter {
 				if(arr[i]>arr[i+1]) {
 					int temp = arr[i];
 					arr[i] = arr[i+1];
-					arr[i+1] = arr[i];
+					arr[i+1] = temp;
 					sorted = false;
 				}
 			}

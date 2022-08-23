@@ -1,6 +1,6 @@
 {
     "java.project.sourcePaths": [
-        "[universal base code]",
+        "lab2",
         "lab1"
     ]
 }

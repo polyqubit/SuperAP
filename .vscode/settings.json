@@ -2,6 +2,7 @@
     "java.project.sourcePaths": [
         "lab2",
         "lab1",
-        "lab3"
+        "lab3",
+        "lab5"
     ]
 }

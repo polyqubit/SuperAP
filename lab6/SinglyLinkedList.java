@@ -53,10 +53,8 @@ public class SinglyLinkedList {
     public void push(int data) {
         if(head==null) {head = new Node(data);}
         Node current = head;
-        int counter = 0;
         while(current.getNext()!=null) {
             current = current.getNext();
-            counter++;
         }
         current.setNext(new Node(data));
     }

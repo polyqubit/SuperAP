@@ -1,6 +1,6 @@
 public class Node {
-    Node next;
-	int data;
+    private Node next;
+	private int data;
 
 	public Node(int data) {
 		next = null;

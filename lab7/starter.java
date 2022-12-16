@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class starter {
     static void p(Object o) {
         System.out.print(o);
@@ -38,7 +40,10 @@ public class starter {
     }
 
     public static void main(String args[]) {
-        String test = "(A+B*(C-D))/E";
+        // String test = "(A+B*(C-D))/E";
+        Scanner sc = new Scanner(System.in);
+        p("Enter infix string: ");
+        String test = sc.nextLine();
         String result = toPostfix(test);
         p(test + " -> " + result + "\n");
     }

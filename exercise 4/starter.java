@@ -10,6 +10,7 @@ public class starter {
         }
         return finish;
     }
+    // 1234, 4
     private static String miniToRoman(int n, int place) {
         switch(place) {
             case 1: {
@@ -138,6 +139,8 @@ public class starter {
         System.out.println("1029 " + integerToRomanNumeral(1029));
         System.out.println("4000 " + integerToRomanNumeral(4000));
         System.out.println("4932 " + integerToRomanNumeral(4932));
+        System.out.println("9342 " + integerToRomanNumeral(9342));
+        System.out.println("9999 " + integerToRomanNumeral(9999));
     }
 }
 

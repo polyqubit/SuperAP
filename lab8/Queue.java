@@ -20,7 +20,11 @@ public class Queue {
             head = new Node(data);
             return;
         }
-        head.setNext(new Node(data));
+        Node t = head;
+        while(null != t.getNext()) {
+            t = t.getNext();
+        }
+        t.setNext(new Node(data));
     }
 
     /*

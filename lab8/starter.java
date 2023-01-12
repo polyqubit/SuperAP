@@ -49,9 +49,16 @@ public class starter {
     }
 
     public static void main(String args[]) {
-        int[] t = { 999112, 321, 4343, 23994 };
-        radix(t);
-        pArr(t);
+        // int[] t = { 999112, 321, 4343, 23994 };
+        // radix(t);
+        // pArr(t);
+        Queue q = new Queue();
+        for(int i = 0; i < 5; i++) {
+            q.enqueue(i);
+        }
+        for(int i = 0; i < 5; i++) {
+            System.out.println(q.dequeue());
+        }
     }
 }
 

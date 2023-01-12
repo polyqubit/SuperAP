@@ -16,7 +16,6 @@ public class starter {
         for (int i = 0; i < a.length; i++) {
             tq[i] = a[i];
         }
-        pArr(tq);
         int maxDigit = 0;
         for (int i : a) {
             maxDigit = (Integer.toString(i).length() > maxDigit) ? Integer.toString(i).length() : maxDigit;
@@ -26,15 +25,15 @@ public class starter {
             divideTen(qa, tq, place);
             int c = 0;
             for (Queue q : qa) {
-                System.out.print(q.getSize() + ":[ ");
+                // System.out.print(q.getSize() + ":[ ");
                 while (!q.isEmpty()) {
                     tq[c] = q.dequeue();
-                    System.out.print(tq[c] + " ");
+                    // System.out.print(tq[c] + " ");
                     c++;
                 }
-                System.out.print("]  ");
+                // System.out.print("]  ");
             }
-            System.out.println("end: " + place + " - " + c);
+            // System.out.println("end: " + place + " - " + c);
             place++;
         }
         for (int i = 0; i < a.length; i++) {
@@ -49,16 +48,10 @@ public class starter {
     }
 
     public static void main(String args[]) {
-        // int[] t = { 999112, 321, 4343, 23994 };
-        // radix(t);
-        // pArr(t);
-        Queue q = new Queue();
-        for(int i = 0; i < 5; i++) {
-            q.enqueue(i);
-        }
-        for(int i = 0; i < 5; i++) {
-            System.out.println(q.dequeue());
-        }
+        int[] t = { 999112, 321, 4343, 23994, 1, 231, 101 };
+        pArr(t);
+        radix(t);
+        pArr(t);
     }
 }
 

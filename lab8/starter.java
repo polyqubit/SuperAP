@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class starter {
     public static void pArr(int[] a) {
         System.out.print("{ ");
@@ -48,10 +50,19 @@ public class starter {
     }
 
     public static void main(String args[]) {
-        int[] t = { 999112, 321, 4343, 23994, 1, 231, 101 };
-        pArr(t);
+        // int[] t = { 999112, 321, 4343, 23994, 1, 231, 101 };
+        int[] t = new int[100000];
+        Random rand = new Random();
+        for(int i = 0; i < t.length; i++) {
+            t[i] = rand.nextInt(100000);
+        }
+        long startTime = System.nanoTime();
+        // pArr(t);
         radix(t);
-        pArr(t);
+        // pArr(t);
+        long endTime = System.nanoTime();
+        System.out.println("Time for radix on 100,000 6-length integers: " + ((endTime-startTime)/1000000) + " ms");
+        // Roughly 15,900 ms when running in VSCode(yikes!)
     }
 }
 

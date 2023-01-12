@@ -15,22 +15,25 @@ public class starter {
         for(int i = 0; i < a.length; i++) {
             tq[i] = a[i];
         }
+        pArr(tq);
         int maxDigit = 0;
         for(int i : a) {
             maxDigit = (Integer.toString(i).length()>maxDigit) ? Integer.toString(i).length() : maxDigit;
         }
-        while(maxDigit > 0) {
-            divideTen(qa, tq, maxDigit);
+        int place = 0;
+        while(place <= maxDigit) {
+            divideTen(qa, tq, place);
             int c = 0;
             for(Queue q : qa) {
-                System.out.println(c);
-                for(int i = 0; i < q.getSize(); i++) {
+                System.out.print(q.getSize() + " ");
+                while(!q.isEmpty()) {
                     tq[c] = q.dequeue();
+                    //System.out.println(tq[c]);
                     c++;
                 }
             }
-            System.out.println("end: " + maxDigit);
-            maxDigit--;
+            System.out.println("end: " + place);
+            place++;
         }
         for(int i = 0; i < a.length; i++) {
             a[i] = tq[i];
@@ -43,7 +46,7 @@ public class starter {
     }
 
     public static void main(String args[]) {
-        int[] t = {112,321,4343,23994};
+        int[] t = {999112,321,4343,23994};
         radix(t);
         pArr(t);
     }
